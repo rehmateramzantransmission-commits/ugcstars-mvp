@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Layout Scale */
+  --nav-height: 72px;
+  --container-max: 1360px;
+  
+  /* Color Palette: Dark Green & Dark Slate Grey System */
+  --bg-canvas: #071913;
+  --bg-subtle: #0D261E;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  
+  /* Dark Green Brand Tokens */
+  --emerald-deep: #05140F;
+  --emerald-primary: #0E6E52;
+  --emerald-glow: #108A67;
+  --emerald-accent: #34D399;
+  
+  /* Navbar & Dark Accent Tokens */
+  --nav-bg: #05140F;
+  --nav-capsule-bg: #0A261D;
+  --accent-pink: #EC4899;
+  
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-card: 20px;
+}
+
+/* Global Reset Guards */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: clip !important;
+}
+
+@layer utilities {
+  .container-spec {
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05140F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0E6E52;
+  border-radius: 9999px;
+}

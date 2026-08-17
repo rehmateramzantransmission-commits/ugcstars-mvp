@@ -1,0 +1,14 @@
+[build]
+  # Run from monorepo root — build only the web app
+  command = "pnpm --filter web build"
+  publish = "apps/web/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "9"
+  TURBO_TELEMETRY_DISABLED = "1"
+  # Disable standalone output to avoid symlink issues
+  NEXT_PRIVATE_STANDALONE = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
