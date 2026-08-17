@@ -1,12 +1,13 @@
 [build]
-  # Build command: generate Prisma client then build Next.js web app
-  command = "npm install -g pnpm@9 && pnpm install --frozen-lockfile && pnpm --filter @repo/db exec prisma generate && pnpm --filter web build"
+  # pnpm is already available on Netlify via Corepack — no need to install it
+  command = "pnpm install --frozen-lockfile && pnpm --filter @repo/db exec prisma generate && pnpm --filter web build"
   publish = "apps/web/.next"
 
 [build.environment]
   NODE_VERSION = "20"
+  PNPM_VERSION = "9"
   TURBO_TELEMETRY_DISABLED = "1"
-  # Stub DATABASE_URL for build time only (no real DB needed at build)
+  # Stub DATABASE_URL so Prisma doesn't fail at build time
   DATABASE_URL = "postgresql://user:password@localhost:5432/ugcstars?schema=public"
 
 [[plugins]]
