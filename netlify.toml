@@ -1,14 +1,13 @@
 [build]
-  # Run from monorepo root — build only the web app
-  command = "pnpm --filter web build"
+  # Build command: generate Prisma client then build Next.js web app
+  command = "npm install -g pnpm@9 && pnpm install --frozen-lockfile && pnpm --filter @repo/db exec prisma generate && pnpm --filter web build"
   publish = "apps/web/.next"
 
 [build.environment]
   NODE_VERSION = "20"
-  PNPM_VERSION = "9"
   TURBO_TELEMETRY_DISABLED = "1"
-  # Disable standalone output to avoid symlink issues
-  NEXT_PRIVATE_STANDALONE = "false"
+  # Stub DATABASE_URL for build time only (no real DB needed at build)
+  DATABASE_URL = "postgresql://user:password@localhost:5432/ugcstars?schema=public"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
